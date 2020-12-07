@@ -25,7 +25,7 @@ class R2APanda(IR2A):
         self.k = 0.14 # Utilizado no calculo da vazao estimada, k deve ser menor que 2/duração do segmento de vídeo(1 no caso)
         self.w = 0.3 # Utilizado no calculo da vazao estimada
         self.start = 0 # Tempo para cálculo da vazão
-        self.t_estimado = [0] # Lista dos temspos estimados
+        self.t_estimado = [0] # Lista dos tempos estimados
         self.t = [] # Lista dos tempos
         self.parsed_mpd = '' # Parser utilizado para as qualidades
         self.qi = [] # Lista das qualidades
@@ -143,7 +143,7 @@ class R2APanda(IR2A):
         
 
     def handle_segment_size_request(self, msg):
-        # time to define the segment quality choose to make the request
+        # time to define the segment quality choosen to make the request
         
         
         lista_buffer=self.whiteboard.get_playback_buffer_size()
