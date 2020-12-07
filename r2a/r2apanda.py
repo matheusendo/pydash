@@ -2,8 +2,8 @@
 """
 Algoritmo baseado no modelo proposto no artigo Probe and Adapt: Rate Adaptation for HTTP Video
 Streaming At Scale.
-
-
+Matheus Eiji Endo - 15/0018169
+Johannes Peter Schulte - 15/0132662
 """
 import timeit
 import time
@@ -143,9 +143,7 @@ class R2APanda(IR2A):
         
 
     def handle_segment_size_request(self, msg):
-        # time to define the segment quality choosen to make the request
-        
-        
+        # Pega os buffers
         lista_buffer=self.whiteboard.get_playback_buffer_size()
 
         #Caso seja o primeiro segmento a lista de buffer está vazia e automaticamente escolhe a qualidade 0
@@ -189,4 +187,3 @@ class R2APanda(IR2A):
 
     def finalization(self):
         pass
-
