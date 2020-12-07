@@ -11,7 +11,7 @@ import statistics
 from player.parser import *
 from r2a.ir2a import IR2A
 
-class R2APanda(IR2A):
+class R2APanda1(IR2A):
     
     def __init__(self, id):
         IR2A.__init__(self, id)
@@ -19,7 +19,7 @@ class R2APanda(IR2A):
         self.lista_vazao_calc = [] #Lista das vazões calculadas
         self.lista_vazao_suavizada = [] # Lista das vazões suavizadas
         self.lista_r = [] # Lista das qualidades escolhidas
-        self.buffer_minimo = 16 # Buffer mínimo
+        self.buffer_minimo = 26 # Buffer mínimo
         self.beta = 0.2 # Utilizado no calculo da tempo estimado
         self.alpha = 0.2 # Utilizado no calculo da suavização da vazao
         self.k = 0.14 # Utilizado no calculo da vazao estimada, k deve ser menor que 2/duração do segmento de vídeo(1 no caso)
@@ -122,14 +122,12 @@ class R2APanda(IR2A):
         # Pega a ultima qualidade
         r_1=self.lista_r[-1]
 
-        # se o buffer for muito baixo escolhe a qualidade automaticamente, se não utiliza a abordagem do artigo, alterando para contar o se o buffer cresceu ou nao
+        # se o buffer for muito baixo escolhe a qualidade automaticamente, se não utiliza a abordagem do artigo
         if buffer[1]<=1:
             r=0
         elif r_1<r_up :
             r=r_up
-        elif r_up<=r_1<=r_down and buffer[1]>= buffer_antigo[1]:
-            r=min(r_1+1,19)
-        elif r_up<=r_1<=r_down and buffer[1]< buffer_antigo[1]:
+        elif r_up<=r_1<=r_down :
             r=r_1
         else:
             r=r_down
